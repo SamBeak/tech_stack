@@ -1,0 +1,7 @@
+#footer{
+    grid-area: footer;
+    @include layout_gap;
+    background-color: #fff;
+    border-top: 0.0625rem solid $border-line__color;
+    padding: 1.3125rem 0 2.5rem;
+}

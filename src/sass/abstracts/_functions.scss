@@ -1,0 +1,12 @@
+@function thirty-opacity($color) {
+    $color : rgba($color, 0.3);
+    @return $color;
+}
+@function half-opacity($color) {
+    $color : rgba($color, 0.5);
+    @return $color;
+}
+@function seventy-opacity($color) {
+    $color : rgba($color, 0.7);
+    @return $color;
+}

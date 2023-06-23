@@ -1,0 +1,23 @@
+#wrap{
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-rows: 1fr auto;
+    grid-template-areas: 
+    'header header header'
+    'nav nav nav'
+    'aside home home'
+    'footer footer footer';
+}
+
+#header{
+    grid-area: "header";
+}
+#aside{
+    grid-area: "aside";
+}
+#home{
+    grid-area: "home";
+}
+#footer{
+    grid-area: "footer";
+}

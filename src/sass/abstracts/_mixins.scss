@@ -1,0 +1,13 @@
+@mixin layout_gap {
+    width: 100%;
+    max-width: 60.625rem;
+    margin: 0 auto;
+}
+@mixin aline_center {
+    display: flex;
+    align-items: center;
+}
+@mixin icon_img {
+    max-width: 100%;
+    margin: auto;
+}
