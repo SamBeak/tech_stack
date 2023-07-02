@@ -9,10 +9,20 @@ base_url = "https://kr.indeed.com/jobs?q="
 search_term = "python"
 
 
-browser.get(f"{base_url}{search_term}")
+browser.get(f"{base_url}{search_term}")     # selenium 을 사용해서 scraping을 해오겠다.
 
-print(browser.page_source)
+soup = BeautifulSoup(browser.page_source, "html.parser")    # 셀레니움이 가져온 페이지 소스
+job_list = soup.find("ul", class_="jobsearch-ResultsList")
 
+
+jobs = job_list.find_all('li', recursive=False)
+
+for job in jobs:
+    zone = job.find("div", class_="mosaic-zone")
+    if zone == None:
+        print("job li")
+    else:
+        print("mosaic li")
 
 while(True):
     pass
