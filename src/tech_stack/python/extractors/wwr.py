@@ -19,13 +19,17 @@ def extract_wwr_jobs(keyword):
                 anchors = post.find_all('a')
                 anchor = anchors[1]
                 link = anchor['href']
-                company, kind, region = anchor.find_all('span', class_="company")
+                company, kind, location = anchor.find_all('span', class_="company")
                 title = anchor.find('span', class_="title")
                 job_data = {
                     'link' : f"https://weworkremotely.com/{link}",
                     'company' : company.string,
-                    'region' : region.string,
+                    'location' : location.string,
                     'position' : title.string
                 }
                 results.append(job_data)                # 신기한 점 : dict도 list에 저장할 수 있다. 출력 확인 결과는 json모델처럼, [ { }, { }, { } ] 이런식
         return results
+    
+# list_of_numbers = [1, 2, 3]
+
+# first, second, third = list_of_numbers # 아이템 각각을 변수로 지정해줄 수 있다. 단, 리스트의 길이를 알고 있을 때만 사용가능

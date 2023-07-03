@@ -11,6 +11,7 @@ search_term = "python"
 
 browser.get(f"{base_url}{search_term}")     # selenium 을 사용해서 scraping을 해오겠다.
 
+results = []
 soup = BeautifulSoup(browser.page_source, "html.parser")    # 셀레니움이 가져온 페이지 소스
 job_list = soup.find("ul", class_="jobsearch-ResultsList")
 
@@ -20,13 +21,19 @@ jobs = job_list.find_all('li', recursive=False)
 for job in jobs:
     zone = job.find("div", class_="mosaic-zone")
     if zone == None:
-        print("job li")
-    else:
-        print("mosaic li")
-
+        anchor = job.select_one("h2 a")
+        title = anchor["aria-label"]
+        link = anchor["href"]
+        company = job.find("span", class_="companyName")
+        location = job.find("div", class_="companyLocation")
+        job_data = {
+            'link' : f"https://kr.indeed.com{link}",
+            'company' : company.string,
+            'location' : location.string,
+            'position' : title
+        }
+        results.append(job_data)
+for result in results:
+    print(result, "\n///////////\n")
 while(True):
     pass
-
-# list_of_numbers = [1, 2, 3]
-
-# first, second, third = list_of_numbers # 아이템 각각을 변수로 지정해줄 수 있다. 단, 리스트의 길이를 알고 있을 때만 사용가능
